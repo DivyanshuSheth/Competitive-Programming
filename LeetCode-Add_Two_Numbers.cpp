@@ -26,11 +26,11 @@ public:
         ListNode * continue_ptr;
         if ((ptr1 == NULL) && (ptr2 != NULL)) {
             ptr_ans -> val = ptr2 -> val + carry;
-            continue_ptr = ptr2;
+            continue_ptr = ptr2->next;
         }
         else if ((ptr2 == NULL) && (ptr1 != NULL)){
             ptr_ans -> val = ptr1 -> val + carry;
-            continue_ptr = ptr1;
+            continue_ptr = ptr1->next;
         }
         else if (carry == 1) {
             ptr_ans -> val = carry;
@@ -41,8 +41,14 @@ public:
             ptr_mistake -> next = NULL;
             return head;
         }
-        ptr_ans -> next = new ListNode;
-        ptr_ans = ptr_ans -> next;
+        if (continue_ptr != NULL) {
+            ptr_ans -> next = new ListNode;
+            ptr_ans = ptr_ans -> next;
+        }
+        else {
+            ptr_ans -> next = NULL;
+            return head;
+        }
         while(continue_ptr != NULL) {
             ptr_ans -> val = continue_ptr -> val;
             ptr_ans -> next = new ListNode;
