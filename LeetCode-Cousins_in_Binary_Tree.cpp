@@ -34,7 +34,6 @@ public:
             order_y.pop();
             y_order++;
         }
-        cout<<x_order<<" "<<y_order<<endl;
         if (x_order / 2 == y_order / 2) {
             return 1;
         }
